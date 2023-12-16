@@ -24,18 +24,13 @@ let s:green  = ['#478226', 28]
 let s:default_fg = s:lgray
 let s:default_bg = s:black
 
-let s:italic    = 'italic'
-let s:bold      = 'bold'
-let s:underline = 'underline'
-let s:none      = 'NONE'
+let s:italic       = 'italic'
+let s:bold         = 'bold'
+let s:underline    = 'underline'
+let s:none         = 'NONE'
 
 let s:default_lst = []
 let s:default_str = ''
-
-if !exists("g:monochrome_italic_comments")
-  let g:monochrome_italic_comments = 0
-endif
-let s:comment_attr = g:monochrome_italic_comments ? s:italic : s:none
 
 function! s:hi(...)
     let group = a:1
@@ -69,12 +64,12 @@ endfunction
 "
 
 call s:hi('Normal')
-call s:hi('Cursor', s:black, s:lgray)
+call s:hi('Cursor', s:black, s:red)
 call s:hi('CursorLine', s:default_lst, s:bgray, s:none)
 call s:hi('CursorLineNr', s:white, s:default_bg, s:bold)
 call s:hi('ColorColumn', s:default_fg, s:bgray)
-call s:hi('Search', s:white, s:sblue)
-call s:hi('Visual', s:white, s:sblue)
+call s:hi('Search', s:black, s:yellow)
+call s:hi('Visual', s:bgray, s:white)
 call s:hi('ErrorMsg', s:white, s:red)
 
 " Tildes at the bottom of a buffer, etc.
@@ -115,10 +110,10 @@ call s:hi('SignColumn')
 call s:hi('Statement', s:white, s:default_bg, s:bold)
 call s:hi('PreProc', s:white, s:default_bg, s:bold)
 call s:hi('String', s:sblue)
-call s:hi('Comment', s:cgray, s:default_bg, s:comment_attr)
+call s:hi('Comment', s:cgray, s:default_bg, s:italic)
 call s:hi('Constant')
 call s:hi('Type', s:white, s:default_bg, s:bold)
-call s:hi('Function', s:white)
+call s:hi('Function', s:white, s:default_bg, s:italic)
 call s:hi('Identifier')
 call s:hi('Special')
 call s:hi('MatchParen', s:lgray, s:black, s:underline)
